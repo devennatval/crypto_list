@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         source: '/api/:path*',
         destination: 'https://api.pintu.co.id/:path*',
       },
+      {
+        source: '/content/:path*',
+        destination: 'https://content.pintu.co.id/:path*'
+      }
     ]
   }
 };
