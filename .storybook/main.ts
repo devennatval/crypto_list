@@ -7,6 +7,9 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    "@storybook/addon-backgrounds",
+    "@storybook/addon-backgrounds",
+    "@storybook/addon-viewport",
   ],
   framework: {
     name: "@storybook/nextjs",
