@@ -9,7 +9,7 @@ const TokenListRow = ({
     currency
 } : TokenListRowProps) => {
     return (
-        <div key={"row " + currency.name} className={"grid grid-cols-token-list border-row-dark"}>
+        <div key={"row " + currency.name} className={"grid grid-cols-token-list border-row-dark transition hover:bg-dark-hover"}>
             <div className={"flex items-center p-5"}>
                 <ReactSVG src={currency.logo} style={{ color: currency.color }}/>
                 <span className="ml-6 text-sm font-semibold"> 
