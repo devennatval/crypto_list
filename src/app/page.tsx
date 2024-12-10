@@ -1,9 +1,11 @@
-import Image from "next/image";
+"use client";
+import Header from "@/components/Header/Header";
+import CenteredContent from "@/components/CenteredContent/CenteredContent";
 
 export default function Home() {
   return (
-    <div>
-      Hello World
-    </div>
+    <CenteredContent>
+      <Header/>
+    </CenteredContent>
   );
 }
