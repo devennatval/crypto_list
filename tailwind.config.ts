@@ -12,6 +12,7 @@ export default {
         background: "hsl(var(--background))",
         primary: "hsl(var(--primary-color))",
         secondary: "hsl(var(--secondary-color))",
+        tertiary: "hsl(var(--tertiary-color))",
         "dark-hover": "hsl(var(--dark-hover))",
       },
       fontFamily: {

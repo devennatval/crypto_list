@@ -6,6 +6,7 @@
   --dark: 216 20% 1%;
   --primary-color: 0 0% 100%;
   --secondary-color: 0 0% 69%;
+  --tertiary-color: 0 0% 20%;
   --dark-hover: 216 10% 12%;
 }
 
@@ -30,6 +31,6 @@ body {
   }
 
   .border-dark {
-    @apply border border-secondary;
+    @apply border border-tertiary;
   }
 }
