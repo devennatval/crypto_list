@@ -47,4 +47,12 @@ body {
   .text-list-header {
     @apply text-sm-bold text-secondary;
   }
+
+  .list-header-right-align {
+    @apply p-5 text-list-header flex justify-end;
+  }
+
+  .list-content-right-align {
+    @apply flex justify-end p-5 text-sm-bold;
+  }
 }

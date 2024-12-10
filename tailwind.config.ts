@@ -22,7 +22,8 @@ export default {
         'inter': ['Inter', 'sans-serif'],
       },
       gridTemplateColumns: {
-       'token-list': '26% 14% 14% 1fr 1fr 1fr 1fr', 
+       'token-list': '24% 16% 16% 1fr 1fr 1fr 1fr', 
+       'token-list-compact': '60% 40%'
       }
       
     },

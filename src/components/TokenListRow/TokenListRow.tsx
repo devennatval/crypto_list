@@ -5,12 +5,14 @@ import { ReactSVG } from "react-svg";
 
 export interface TokenListRowProps {
     currency: Currency,
-    priceData: TokenWithPrice | undefined
+    priceData: TokenWithPrice | undefined,
+    isCompact: boolean,
 }
 
 const TokenListRow = ({
     currency,
     priceData,
+    isCompact,
 } : TokenListRowProps) => {
     if(!priceData) return (<div></div>);
 
@@ -29,30 +31,55 @@ const TokenListRow = ({
         else return value + "%";
     }
 
-    return (
-        <div key={"row " + currency.name} className={"grid grid-cols-token-list border-row-dark transition hover:bg-dark-hover"}>
-            <div className={"flex items-center p-5"}>
-                <ReactSVG src={currency.logo} style={{ color: currency.color }}/>
+    const TokenNameAndImage = () => (
+        <div className={"flex items-center p-5"}>
+            <ReactSVG src={currency.logo} style={{ color: currency.color }}/>
+            {
+                isCompact ? 
+                <div className={"flex flex-col justify-center ml-6"}>
+                    <div className={"text-sm-bold mb-1"}> { currency.name } </div>
+                    <div className={"text-sm text-secondary"}> { currency.currencySymbol }</div>
+                </div> :
                 <span className={"ml-6 text-sm-bold"}> 
                     { currency.name }
                 </span>
+            }
+        </div>
+    )
+
+    if(isCompact) return (
+        <div className={"grid grid-cols-token-list-compact border-row-dark transition hover:bg-dark-hover"}>
+            <TokenNameAndImage/>
+            <div className={"flex flex-col items-end justify-center p-5 text-sm-bold"}>
+                <div className={"text-sm-bold mb-1"}>
+                    { formatRupiah(parseInt(priceData.latestPrice)) }
+                </div>
+                <div className={`text-sm font-bold ${getTextColor(priceData.day)}`}>
+                    { getChangesValue(priceData.day) }
+                </div>
             </div>
+        </div>
+    );
+
+    return (
+        <div className={"grid grid-cols-token-list border-row-dark transition hover:bg-dark-hover"}>
+            <TokenNameAndImage/>
             <div className={"p-5 text-sm text-secondary"}>
                 { currency.currencySymbol }
             </div>
-            <div className={"p-5 text-sm-bold"}>
+            <div className={"list-content-right-align"}>
                 { formatRupiah(parseInt(priceData.latestPrice)) }
             </div>
-            <div className={`p-5 text-sm-bold ${getTextColor(priceData.day)}`}>
+            <div className={`${getTextColor(priceData.day)} list-content-right-align`}>
                 { getChangesValue(priceData.day) }
             </div>
-            <div className={`p-5 text-sm-bold ${getTextColor(priceData.week)}`}>
+            <div className={`${getTextColor(priceData.week)} list-content-right-align`}>
                 { getChangesValue(priceData.week) }
             </div>
-            <div className={`p-5 text-sm-bold ${getTextColor(priceData.month)}`}>
+            <div className={`${getTextColor(priceData.month)} list-content-right-align`}>
                 { getChangesValue(priceData.month) }
             </div>
-            <div className={`p-5 text-sm-bold ${getTextColor(priceData.year)}`}>
+            <div className={`${getTextColor(priceData.year)} list-content-right-align`}>
                 { getChangesValue(priceData.year) }
             </div>
         </div>
