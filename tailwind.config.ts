@@ -23,9 +23,8 @@ export default {
       },
       gridTemplateColumns: {
        'token-list': '24% 16% 16% 1fr 1fr 1fr 1fr', 
-       'token-list-compact': '60% 40%'
+       'token-list-compact': '55% 45%'
       }
-      
     },
   },
   plugins: [],

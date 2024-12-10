@@ -37,8 +37,8 @@ const TokenListRow = ({
             {
                 isCompact ? 
                 <div className={"flex flex-col justify-center ml-6"}>
-                    <div className={"text-sm-bold mb-1"}> { currency.name } </div>
-                    <div className={"text-sm text-secondary"}> { currency.currencySymbol }</div>
+                    <div className={"text-xs font-bold mb-1"}> { currency.name } </div>
+                    <div className={"text-xs text-secondary"}> { currency.currencySymbol }</div>
                 </div> :
                 <span className={"ml-6 text-sm-bold"}> 
                     { currency.name }
@@ -51,10 +51,10 @@ const TokenListRow = ({
         <div className={"grid grid-cols-token-list-compact border-row-dark transition hover:bg-dark-hover"}>
             <TokenNameAndImage/>
             <div className={"flex flex-col items-end justify-center p-5 text-sm-bold"}>
-                <div className={"text-sm-bold mb-1"}>
+                <div className={"text-xs font-bold mb-1"}>
                     { formatRupiah(parseInt(priceData.latestPrice)) }
                 </div>
-                <div className={`text-sm font-bold ${getTextColor(priceData.day)}`}>
+                <div className={`text-xs font-bold ${getTextColor(priceData.day)}`}>
                     { getChangesValue(priceData.day) }
                 </div>
             </div>
