@@ -1,4 +1,4 @@
-export interface CurrencyBase {
+interface CurrencyBase {
     currency_id: number;
     currencyGroup: string;
     decimal_point: number;
@@ -6,7 +6,7 @@ export interface CurrencyBase {
     listingDate: string;
 }
 
-export interface Wallet extends CurrencyBase {
+interface Wallet extends CurrencyBase {
     tokenSymbol: string;
     tokenType: string;
     blockchain: string;
