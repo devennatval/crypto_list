@@ -20,6 +20,15 @@ body {
     @apply transition-all duration-200 ease-in-out;
   }
 
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Handle non-webkit browser */
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+
   .border-dark {
     @apply border border-secondary;
   }
