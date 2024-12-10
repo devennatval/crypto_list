@@ -1,7 +1,7 @@
 import { ReactSVG } from "react-svg";
 
 const SearchBar = () => {
-    const icon = <ReactSVG src="/assets/icons/search.svg" width={20} height={20} />;
+    const icon = <ReactSVG src="/assets/icons/search.svg" className="w-5 h-5"/>;
 
     return <div className="cursor-pointer">
         <div className="hidden md:flex w-[22rem] items-center px-4 py-3 border-dark rounded-lg transition hover:bg-dark-hover">
