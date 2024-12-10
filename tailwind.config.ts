@@ -9,8 +9,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "hsl(var(--background))",
+        primary: "hsl(var(--primary-color))",
+        secondary: "hsl(var(--secondary-color))",
+        "dark-hover": "hsl(var(--dark-hover))",
+      },
+      fontFamily: {
+        'neue-haas': ['"Neue Haas Grotesk Display Pro"', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif'],
       },
     },
   },
