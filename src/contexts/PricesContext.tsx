@@ -10,7 +10,7 @@ interface PricesContextType {
 const PricesContext = createContext<PricesContextType | undefined>(undefined);
 
 export const PricesProvider = ({ children } : { children: React.ReactNode }) => {
-    const { data, isLoading, error } = useQuery({
+    const { data } = useQuery({
         queryKey: ["token_prices"],
         queryFn: () => tradeApi.fetchPriceChanges(),
         refetchInterval: 5000,

@@ -6,7 +6,7 @@ const TokenList = () => {
     const { supportedCurrencies } = useCurrencies();
     const { tokenPrices } = usePrices();
 
-    const getTokenPriceData = (symbol: String) => {
+    const getTokenPriceData = (symbol: string) => {
         const priceData = tokenPrices.find(item => {
             const tokenSymbol = item.pair.split("/").at(0) as string;
             return tokenSymbol.toLowerCase() === symbol.toLowerCase();
