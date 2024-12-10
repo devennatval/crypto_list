@@ -19,6 +19,10 @@ export default {
         'neue-haas': ['"Neue Haas Grotesk Display Pro"', 'sans-serif'],
         'inter': ['Inter', 'sans-serif'],
       },
+      gridTemplateColumns: {
+       'token-list': '26% 14% 14% 1fr 1fr 1fr 1fr', 
+      }
+      
     },
   },
   plugins: [],

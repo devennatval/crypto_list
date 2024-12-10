@@ -33,4 +33,12 @@ body {
   .border-dark {
     @apply border border-tertiary;
   }
+
+  .border-row-dark {
+    @apply border-x border-b border-tertiary;
+  }
+
+  .text-list-header {
+    @apply text-sm font-semibold text-secondary;
+  }
 }
