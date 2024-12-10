@@ -8,6 +8,8 @@
   --secondary-color: 0 0% 69%;
   --tertiary-color: 0 0% 20%;
   --dark-hover: 216 10% 12%;
+  --red-dark: 0 76% 57%;
+  --green-dark: 149 64% 40%;
 }
 
 body {
@@ -38,7 +40,11 @@ body {
     @apply border-x border-b border-tertiary;
   }
 
+  .text-sm-bold {
+    @apply text-sm font-bold
+  }
+
   .text-list-header {
-    @apply text-sm font-semibold text-secondary;
+    @apply text-sm-bold text-secondary;
   }
 }

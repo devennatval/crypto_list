@@ -14,6 +14,8 @@ export default {
         secondary: "hsl(var(--secondary-color))",
         tertiary: "hsl(var(--tertiary-color))",
         "dark-hover": "hsl(var(--dark-hover))",
+        "red-dark": "hsl(var(--red-dark))",
+        "green-dark": "hsl(var(--green-dark))",
       },
       fontFamily: {
         'neue-haas': ['"Neue Haas Grotesk Display Pro"', 'sans-serif'],

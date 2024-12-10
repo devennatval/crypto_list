@@ -1,19 +1,31 @@
 import { useCurrencies } from "@/contexts/CurrenciesContext";
 import TokenListRow from "../TokenListRow/TokenListRow"
+import { usePrices } from "@/contexts/PricesContext";
 
 const TokenList = () => {
     const { supportedCurrencies } = useCurrencies();
+    const { tokenPrices } = usePrices();
+
+    const getTokenPriceData = (symbol: String) => {
+        const priceData = tokenPrices.find(item => {
+            const tokenSymbol = item.pair.split("/").at(0) as string;
+            return tokenSymbol.toLowerCase() === symbol.toLowerCase();
+        })
+        
+        return priceData;
+    }
 
     const TokenListHeaderRow = () => (
         <div className={"grid grid-cols-token-list border-dark"}>
-            <div className={"py-5 pl-[68px] pr-5 col-span-2 text-list-header"}>CRYPTO</div>
-            <div className="p-5 text-list-header">HARGA</div>
-            <div className="p-5 text-list-header">24 JAM</div>
-            <div className="p-5 text-list-header">1 MGG</div>
-            <div className="p-5 text-list-header">1 BLN</div>
-            <div className="p-5 text-list-header">1 THN</div>
+            <div className={"py-5 pl-[68px] pr-5 col-span-2 text-list-header"}> CRYPTO </div>
+            <div className={"p-5 text-list-header"}> HARGA </div>
+            <div className={"p-5 text-list-header"}> 24 JAM </div>
+            <div className={"p-5 text-list-header"}> 1 MGG </div>
+            <div className={"p-5 text-list-header"}> 1 BLN </div>
+            <div className={"p-5 text-list-header"}> 1 THN </div>
         </div>
     );
+    
 
     return (
         <div>
@@ -21,7 +33,7 @@ const TokenList = () => {
                 <TokenListHeaderRow/>
                 {
                     supportedCurrencies.map((currency) => (
-                        <TokenListRow key={"token_row_" + currency.currencySymbol} currency={currency}/>
+                        <TokenListRow key={"token_row_" + currency.currencySymbol} currency={currency} priceData={getTokenPriceData(currency.currencySymbol)}/>
                     ))
                 }
             </div>
