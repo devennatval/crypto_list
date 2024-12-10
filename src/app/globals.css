@@ -15,14 +15,12 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-.transition {
-  transition-property: background-color, color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 0.2s;
-}
+@layer utilities {
+  .transition {
+    @apply transition-all duration-200 ease-in-out;
+  }
 
-.border-dark {
-  @apply border;
-  @apply border-secondary;
-  @apply rounded-lg;
+  .border-dark {
+    @apply border border-secondary;
+  }
 }
