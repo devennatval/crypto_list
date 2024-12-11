@@ -10,6 +10,9 @@ export interface TokenListRowProps {
     isCompact: boolean,
 }
 
+const COMPACT_ROW_MIN_HEIGHT = 75;
+const ROW_MIN_HEIGHT = 65;
+
 const TokenListRow = ({
     currency,
     priceData,
@@ -89,7 +92,7 @@ const TokenListRow = ({
     }
 
     return (
-        <LazyRender rootMargin="0px 0px 100px 0px" minHeight={isCompact ? 75 : 65}>
+        <LazyRender rootMargin="0px 0px 100px 0px" minHeight={isCompact ? COMPACT_ROW_MIN_HEIGHT : ROW_MIN_HEIGHT}>
             <RowContent/>
         </LazyRender>
     );

@@ -46,9 +46,9 @@ const TokenList = () => {
                     return 0;
             }
         }
-        
-        let valueA = getValue(a);
-        let valueB = getValue(b);
+
+        const valueA = getValue(a);
+        const valueB = getValue(b);
         
         if(sortOrder === SortOrder.ASC) return valueA - valueB;
         else return valueB - valueA;
@@ -136,17 +136,17 @@ const TokenList = () => {
 
     const tokenListContentRows = React.useMemo(() => {
         if(sortType !== SortType.NONE) {
-            return sortedTokenPrices.map((priceData, index) => {
+            return sortedTokenPrices.map((priceData) => {
                 const symbol = priceData.pair.split("/").at(0)?.toUpperCase() ?? '';
 
-                return <TokenListRow key={"token_row_" + index} currency={getTokenData(symbol)} priceData={priceData} isCompact={isSmallScreen} />
+                return <TokenListRow key={"token_row_" + symbol} currency={getTokenData(symbol)} priceData={priceData} isCompact={isSmallScreen} />
             });
         }
 
         return supportedCurrencies.map((currency) => (
             <TokenListRow key={"token_row_" + currency.currencySymbol} currency={currency} priceData={getTokenPriceData(currency.currencySymbol)} isCompact={isSmallScreen}/>
         ))
-    }, [tokenPrices, sortedTokenPrices, isSmallScreen]);
+    }, [tokenPrices, sortedTokenPrices, supportedCurrencies, isSmallScreen]);
     
     return (
         <div className={isSmallScreen ? '' : "min-w-[1024px]"}>

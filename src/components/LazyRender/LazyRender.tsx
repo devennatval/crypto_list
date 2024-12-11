@@ -29,10 +29,11 @@ const LazyRender = ({
             { rootMargin }
         );
 
-        if(ref.current) observer.observe(ref.current);
+        const currentRef = ref.current;
+        if(currentRef) observer.observe(currentRef);
 
         return () => {
-            if(ref.current) observer.disconnect();
+            if(currentRef) observer.disconnect();
         };
     }, [rootMargin, triggerOnce]);
 
