@@ -28,5 +28,9 @@ export default {
       }
     },
   },
+  safelist: [
+    'min-h-[65px]',
+    'min-h-[75px]',
+  ],
   plugins: [],
 } satisfies Config;
