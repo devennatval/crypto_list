@@ -57,7 +57,7 @@ const TokenListRow = ({
                 <TokenNameAndImage/>
                 <div className={"flex flex-col items-end justify-center p-5 text-sm-bold"}>
                     <div className={"text-xs font-bold mb-1"}>
-                        { formatRupiah(parseInt(priceData.latestPrice)) }
+                        { formatRupiah(parseFloat(priceData.latestPrice)) }
                     </div>
                     <div className={`text-xs font-bold ${getTextColor(priceData.day)}`}>
                         { getChangesValue(priceData.day) }
@@ -73,7 +73,7 @@ const TokenListRow = ({
                     { currency.currencySymbol }
                 </div>
                 <div className={"list-content-right-align"}>
-                    { formatRupiah(parseInt(priceData.latestPrice)) }
+                    { formatRupiah(parseFloat(priceData.latestPrice)) }
                 </div>
                 <div className={`${getTextColor(priceData.day)} list-content-right-align`}>
                     { getChangesValue(priceData.day) }
