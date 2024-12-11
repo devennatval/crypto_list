@@ -48,15 +48,13 @@ const TokenList = () => {
     );
 
     return (
-        <div>
-            <div className={"min-w-[1024px]"}>
-                <TokenListHeaderRow/>
-                {
-                    supportedCurrencies.map((currency) => (
-                        <TokenListRow key={"token_row_" + currency.currencySymbol} currency={currency} priceData={getTokenPriceData(currency.currencySymbol)} isCompact={false}/>
-                    ))
-                }
-            </div>
+        <div className={"min-w-[1024px]"}>
+            <TokenListHeaderRow/>
+            {
+                supportedCurrencies.map((currency) => (
+                        <TokenListRow key={"token_row_" + currency.currencySymbol}currency={currency} priceData={getTokenPriceData(currency.currencySymbol)} isCompact={false}/>
+                ))
+            }
         </div>
     )
 }

@@ -2,6 +2,7 @@ import { Currency } from "@/models/Currency"
 import { TokenWithPrice } from "@/models/TokenWithPrice";
 import { formatRupiah } from "@/utils/common";
 import { ReactSVG } from "react-svg";
+import LazyRender from "../LazyRender/LazyRender";
 
 export interface TokenListRowProps {
     currency: Currency,
@@ -14,7 +15,7 @@ const TokenListRow = ({
     priceData,
     isCompact,
 } : TokenListRowProps) => {
-    if(!priceData) return (<div></div>);
+    if(!priceData) return;
 
     const getTextColor = (value: string) => {
         const numericValue = parseFloat(value);
@@ -47,42 +48,50 @@ const TokenListRow = ({
         </div>
     )
 
-    if(isCompact) return (
-        <div className={"grid grid-cols-token-list-compact border-row-dark transition hover:bg-dark-hover"}>
-            <TokenNameAndImage/>
-            <div className={"flex flex-col items-end justify-center p-5 text-sm-bold"}>
-                <div className={"text-xs font-bold mb-1"}>
+    const RowContent = () => {
+        if(isCompact) return (
+            <div className={"grid grid-cols-token-list-compact border-row-dark transition hover:bg-dark-hover"}>
+                <TokenNameAndImage/>
+                <div className={"flex flex-col items-end justify-center p-5 text-sm-bold"}>
+                    <div className={"text-xs font-bold mb-1"}>
+                        { formatRupiah(parseInt(priceData.latestPrice)) }
+                    </div>
+                    <div className={`text-xs font-bold ${getTextColor(priceData.day)}`}>
+                        { getChangesValue(priceData.day) }
+                    </div>
+                </div>
+            </div>
+        );
+
+        return (
+            <div className={"grid grid-cols-token-list border-row-dark transition hover:bg-dark-hover"}>
+                <TokenNameAndImage/>
+                <div className={"p-5 text-sm text-secondary"}>
+                    { currency.currencySymbol }
+                </div>
+                <div className={"list-content-right-align"}>
                     { formatRupiah(parseInt(priceData.latestPrice)) }
                 </div>
-                <div className={`text-xs font-bold ${getTextColor(priceData.day)}`}>
+                <div className={`${getTextColor(priceData.day)} list-content-right-align`}>
                     { getChangesValue(priceData.day) }
                 </div>
+                <div className={`${getTextColor(priceData.week)} list-content-right-align`}>
+                    { getChangesValue(priceData.week) }
+                </div>
+                <div className={`${getTextColor(priceData.month)} list-content-right-align`}>
+                    { getChangesValue(priceData.month) }
+                </div>
+                <div className={`${getTextColor(priceData.year)} list-content-right-align`}>
+                    { getChangesValue(priceData.year) }
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 
     return (
-        <div className={"grid grid-cols-token-list border-row-dark transition hover:bg-dark-hover"}>
-            <TokenNameAndImage/>
-            <div className={"p-5 text-sm text-secondary"}>
-                { currency.currencySymbol }
-            </div>
-            <div className={"list-content-right-align"}>
-                { formatRupiah(parseInt(priceData.latestPrice)) }
-            </div>
-            <div className={`${getTextColor(priceData.day)} list-content-right-align`}>
-                { getChangesValue(priceData.day) }
-            </div>
-            <div className={`${getTextColor(priceData.week)} list-content-right-align`}>
-                { getChangesValue(priceData.week) }
-            </div>
-            <div className={`${getTextColor(priceData.month)} list-content-right-align`}>
-                { getChangesValue(priceData.month) }
-            </div>
-            <div className={`${getTextColor(priceData.year)} list-content-right-align`}>
-                { getChangesValue(priceData.year) }
-            </div>
-        </div>
+        <LazyRender rootMargin="0px 0px 100px 0px" minHeight={isCompact ? 75 : 65}>
+            <RowContent/>
+        </LazyRender>
     );
 }
 
