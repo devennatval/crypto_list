@@ -5,7 +5,7 @@ import { ReactSVG } from "react-svg";
 import LazyRender from "../LazyRender/LazyRender";
 
 export interface TokenListRowProps {
-    currency: Currency,
+    currency: Currency | undefined,
     priceData: TokenWithPrice | undefined,
     isCompact: boolean,
 }
@@ -15,7 +15,7 @@ const TokenListRow = ({
     priceData,
     isCompact,
 } : TokenListRowProps) => {
-    if(!priceData) return;
+    if(!priceData || !currency) return;
 
     const getTextColor = (value: string) => {
         const numericValue = parseFloat(value);

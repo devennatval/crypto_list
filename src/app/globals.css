@@ -49,7 +49,7 @@ body {
   }
 
   .list-header-right-align {
-    @apply p-5 text-list-header flex justify-end;
+    @apply p-5 text-list-header flex justify-end items-center;
   }
 
   .list-content-right-align {
