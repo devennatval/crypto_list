@@ -136,15 +136,15 @@ const TokenList = () => {
 
     const tokenListContentRows = React.useMemo(() => {
         if(sortType !== SortType.NONE) {
-            return sortedTokenPrices.map((priceData) => {
+            return sortedTokenPrices.map((priceData, index) => {
                 const symbol = priceData.pair.split("/").at(0)?.toUpperCase() ?? '';
 
-                return <TokenListRow key={"token_row_" + symbol} currency={getTokenData(symbol)} priceData={priceData} isCompact={isSmallScreen} />
+                return <TokenListRow key={"token_row_" + index} currency={getTokenData(symbol)} priceData={priceData} isCompact={isSmallScreen} />
             });
         }
 
-        return supportedCurrencies.map((currency) => (
-            <TokenListRow key={"token_row_" + currency.currencySymbol} currency={currency} priceData={getTokenPriceData(currency.currencySymbol)} isCompact={isSmallScreen}/>
+        return supportedCurrencies.map((currency, index) => (
+            <TokenListRow key={"token_row_" + index} currency={currency} priceData={getTokenPriceData(currency.currencySymbol)} isCompact={isSmallScreen}/>
         ))
     }, [tokenPrices, sortedTokenPrices, supportedCurrencies, isSmallScreen]);
     
