@@ -1,7 +1,8 @@
 import { useCurrencies } from "@/contexts/CurrenciesContext";
-import TokenListRow from "../TokenListRow/TokenListRow"
+import TokenListRow from "../TokenListRow/TokenListRow";
 import { usePrices } from "@/contexts/PricesContext";
 import { useMediaQuery } from "react-responsive";
+import React from "react";
 
 const TokenList = () => {
     const { supportedCurrencies } = useCurrencies();
@@ -18,45 +19,38 @@ const TokenList = () => {
         return priceData;
     }
 
-    const TokenListHeaderRow = () => (
-        <div className={"grid grid-cols-token-list border-dark"}>
-            <div className={"py-5 pl-[68px] pr-5 col-span-2 text-list-header"}> CRYPTO </div>
-            <div className={"list-header-right-align"}> HARGA </div>
-            <div className={"list-header-right-align"}> 24 JAM </div>
-            <div className={"list-header-right-align"}> 1 MGG </div>
-            <div className={"list-header-right-align"}> 1 BLN </div>
-            <div className={"list-header-right-align"}> 1 THN </div>
-        </div>
-    );
+    const TokenListHeaderRow = () => {
+        if(isSmallScreen) return (
+            <div className={"grid grid-cols-token-list-compact border-dark"}>
+                <div className={"py-5 pl-[68px] pr-5 text-list-header"}> CRYPTO </div>
+                <div className={"list-header-right-align"}> HARGA / 24H </div>
+            </div>
+        );
+
+        return (
+            <div className={"grid grid-cols-token-list border-dark"}>
+                <div className={"py-5 pl-[68px] pr-5 col-span-2 text-list-header"}> CRYPTO </div>
+                <div className={"list-header-right-align"}> HARGA </div>
+                <div className={"list-header-right-align"}> 24 JAM </div>
+                <div className={"list-header-right-align"}> 1 MGG </div>
+                <div className={"list-header-right-align"}> 1 BLN </div>
+                <div className={"list-header-right-align"}> 1 THN </div>
+            </div>
+        );
+    };
+
+    const tokenListContentRows = React.useMemo(() => {
+        return supportedCurrencies.map((currency) => (
+            <TokenListRow key={"token_row_" + currency.currencySymbol} currency={currency} priceData={getTokenPriceData(currency.currencySymbol)} isCompact={isSmallScreen}/>
+        ))
+    }, [tokenPrices, isSmallScreen]) ;
     
-    const TokenListHeaderCompactRow = () => (
-        <div className={"grid grid-cols-token-list-compact border-dark"}>
-            <div className={"py-5 pl-[68px] pr-5 text-list-header"}> CRYPTO </div>
-            <div className={"list-header-right-align"}> HARGA / 24H </div>
-        </div>
-    )
-
-    if(isSmallScreen) return (
-        <div>
-            <TokenListHeaderCompactRow/>
-            {
-                supportedCurrencies.map((currency) => (
-                    <TokenListRow key={"token_compact_row_" + currency.currencySymbol} currency={currency} priceData={getTokenPriceData(currency.currencySymbol)} isCompact={true}/>
-                ))
-            }
+    return (
+        <div className={isSmallScreen ? '' : "min-w-[1024px]"}>
+            <TokenListHeaderRow/>
+            { tokenListContentRows }
         </div>
     );
-
-    return (
-        <div className={"min-w-[1024px]"}>
-            <TokenListHeaderRow/>
-            {
-                supportedCurrencies.map((currency) => (
-                        <TokenListRow key={"token_row_" + currency.currencySymbol}currency={currency} priceData={getTokenPriceData(currency.currencySymbol)} isCompact={false}/>
-                ))
-            }
-        </div>
-    )
 }
 
 export default TokenList;
