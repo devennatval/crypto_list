@@ -7,7 +7,7 @@ const SearchBar = () => {
         <div className="hidden md:flex w-[22rem] items-center px-4 py-3 border-dark rounded-lg transition hover:bg-dark-hover">
             { icon }
             <div className="ml-4 text-sm text-secondary">
-                Cari aset di Pintu
+                Cari aset...
             </div>
         </div>
         <div className="md:hidden px-4 py-2">
