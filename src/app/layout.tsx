@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "PINTU ASSESSMENT DEVEN",
+  title: "Crypto List",
 };
 
 export default function RootLayout({
