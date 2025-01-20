@@ -5,6 +5,13 @@ npm run dev
 ```
 Then, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Tech Stacks
+- Next.js
+- Typescript
+- TailwindCSS
+- React Query
+- Storybook
+
 ## Feature
 This page shows a list of supported cryptocurrencies with the following data
 - Currency name
@@ -21,7 +28,7 @@ By clicking on a column header, users can toggle through the following sort stat
 - Default/No Sort: Clicking the column header a third time will remove the sort, reverting the column to its original state
 
 ## Deployment
-[Click here to see live](https://pintu-fe-assessment-deven-nathanaels-projects.vercel.app/?__vercel_draft=1)
+[Click here to see live](https://crypto-list-seven.vercel.app/)
 
 ## Improvement Area
 - When the page loads the essential data, we can show the component as a skeletal component
